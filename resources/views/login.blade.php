@@ -3,23 +3,31 @@
 <section id="contentSection">
   <div class="contact_area">
     <h2>LOGIN</h2>
-    <form action="#" class="contact_form">
+    <form action="/login" method="POST" class="contact_form">
+      @csrf
       <div class="form-group">
-          <input class="form-control" type="text" placeholder="Name*">
+          <input class="form-control" type="text" name="email" placeholder="Email*"> <!-- Sử dụng email để đăng nhập -->
       </div>
       <div class="form-group">
-          <input class="form-control" type="email" placeholder="Email*">
+          <input class="form-control" type="password" name="password" placeholder="Password*"> <!-- Thêm trường nhập mật khẩu -->
       </div>
       <div class="form-group">
           <select class="form-control" id="role_select" name="role">
-              <option value="student">Student</option>
-              <option value="marketing_head">Marketing Head</option>
+              <option value="1">Sign in with Marketing Head</option>
+              <option value="2">Sign in with Student</option>
           </select>
       </div>
       <div class="form-group">
-          <input type="submit" value="Send Message" class="btn btn-primary">
+          <input type="submit" value="Login" class="btn btn-primary">
       </div>
     </form>
+    @if($errors->any())
+      <div class="alert alert-danger">
+          @foreach($errors->all() as $error)
+              <p>{{ $error }}</p>
+          @endforeach
+      </div>
+    @endif
   </div>
 </section>
 @endsection
