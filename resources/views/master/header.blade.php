@@ -4,13 +4,12 @@
         <div class="header_top">
           <div class="header_top_left">
             <ul class="top_nav">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="#">About</a></li>
-              <li><a href="pages/contact.html">Contact</a></li>
+              <li><a href="/">Home</a></li>
+              <li><a href="/login">Login</a></li>
             </ul>
           </div>
           <div class="header_top_right">
-            <p>Friday, December 05, 2045</p>
+            <p>{{ \Carbon\Carbon::now()->format('l, F d, Y') }}</p>
           </div>
         </div>
       </div>
