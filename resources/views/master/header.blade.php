@@ -3,10 +3,17 @@
       <div class="col-lg-12 col-md-12 col-sm-12">
         <div class="header_top">
           <div class="header_top_left">
-            <ul class="top_nav">
-              <li><a href="/">Home</a></li>
+          <ul class="top_nav">
+            <li><a href="/">Home</a></li>
+            @if(Auth::check())
+              <!-- Người dùng đã đăng nhập -->
+              <li><a href="/user">Profile</a></li>
+              <li><a href="/user">Profile</a></li>
+            @else
+              <!-- Người dùng chưa đăng nhập -->
               <li><a href="/login">Login</a></li>
-            </ul>
+            @endif
+          </ul>
           </div>
           <div class="header_top_right">
             <p>{{ \Carbon\Carbon::now()->format('l, F d, Y') }}</p>

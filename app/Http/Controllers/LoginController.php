@@ -37,7 +37,7 @@ class LoginController extends Controller
             case 1:
                 return redirect()->route('admin.dashboard');
             case 2:
-                return redirect()->route('user.dashboard');
+                return redirect()->route('home');
             default:
                 // Sử dụng abort(403) nếu role không hợp lệ
                 return abort(403, 'Access Denied.');
