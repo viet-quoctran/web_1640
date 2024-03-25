@@ -27,6 +27,7 @@
 <a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
 <div class="container">
   @include('master.header')
+  @include('master.newsection')
   @yield('content')
   @include('master.footer')
 </div>

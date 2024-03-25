@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Student\ContributeController;
 use App\Http\Middleware\CheckAdmin;
 /*
 |--------------------------------------------------------------------------
@@ -17,11 +18,13 @@ use App\Http\Middleware\CheckAdmin;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 Route::name('user.')->group(function () {
     Route::get('/login', [LoginController::class, 'index'])->name('index.login');
     Route::post('/login', [LoginController::class, 'login'])->middleware('throttle:10,1')->name('login');
+    Route::get('/contribute',[ContributeController::class,'index'])->name('get.contribute');
+    Route::post('/contribute',[ContributeController::class,'postContribute'])->name('post.contribute');
 });
 
 

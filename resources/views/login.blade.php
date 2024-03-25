@@ -3,7 +3,7 @@
 <section id="contentSection">
   <div class="contact_area">
     <h2>LOGIN</h2>
-    <form action="/login" method="POST" class="contact_form">
+    <form action="{{ route('user.login') }}" method="POST" class="contact_form">
       @csrf
       <div class="form-group">
           <input class="form-control" type="text" name="email" placeholder="Email*"> <!-- Sử dụng email để đăng nhập -->
