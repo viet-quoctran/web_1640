@@ -9,9 +9,25 @@
             <form action="{{ route('user.post.contribute') }}" method ="post" enctype="multipart/form-data" class="contact_form">
                 @csrf
                 <input class="form-control" name="email" type="text" value="{{ Auth::check() ? Auth::user()->email : '' }}" disabled>
-                <input class="form-control" type="file" name="word_files[]" multiple required>
+                <div class="form-group">
+                  <label for="word_files">Upload Word Files</label>
+                  <input class="form-control" id="word_files" type="file" name="word_files[]" multiple required>
+                </div>
+                <div class="form-group">
+                  <label for="image_files">Upload Image Files</label>
+                  <input class="form-control" id="image_files" type="file" name="image_files[]" accept="image/*" multiple required>
+                </div>
+                <div class="form-group">
+                  <input type="checkbox" id="commitment" name="commitment" required>
+                  <label for="commitment">I commit to upload files.</label>
+                </div>
                 <input style="margin-top:30px" type="submit" value="Upload">
             </form>
+            @if(session('success'))
+              <div class="alert alert-success">
+                  {{ session('success') }}
+              </div>
+            @endif
           </div>
         </div>
       </div>
@@ -46,4 +62,20 @@
       </div>
     </div>
 </section>
+<script>
+    // Lấy tham chiếu đến checkbox và nút upload
+    var checkbox = document.getElementById('commitment');
+    var uploadButton = document.getElementById('uploadButton');
+
+    // Thêm sự kiện change vào checkbox
+    checkbox.addEventListener('change', function() {
+        // Nếu checkbox được chọn, cho phép người dùng nhấp vào nút upload
+        if (this.checked) {
+            uploadButton.disabled = false;
+        } else {
+            // Nếu checkbox không được chọn, vô hiệu hóa nút upload
+            uploadButton.disabled = true;
+        }
+    });
+</script>
 @endsection
