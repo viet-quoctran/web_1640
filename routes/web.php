@@ -29,7 +29,9 @@ Route::name('user.')->group(function () {
 
 
 Route::prefix('admin')->middleware(['isAdmin'])->group(function () {
-    // Đảm bảo rằng route này có tên là 'admin.dashboard'
-    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+    Route::post('/store-user', [AdminController::class, 'storeUser'])->name('store.user');
+    Route::put('/update-user/{id}', [AdminController::class, 'updateUser'])->name('update.user'); // Sử dụng PUT ở đây
+    Route::delete('/delete-user/{id}', [AdminController::class, 'deleteUser'])->name('delete.user');
 });
 
