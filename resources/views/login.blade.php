@@ -15,6 +15,7 @@
           <select class="form-control" id="role_select" name="role">
               <option value="1">Sign in with Marketing Head</option>
               <option value="2">Sign in with Student</option>
+              <option value="3">Sign in with Manager</option>
           </select>
       </div>
       <div class="form-group">

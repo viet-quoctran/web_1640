@@ -35,6 +35,7 @@ class LoginController extends Controller
     {
         switch ($role) {
             case 1:
+            case 3:
                 return redirect()->route('dashboard');
             case 2:
                 return redirect()->route('home');

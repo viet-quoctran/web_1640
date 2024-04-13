@@ -5,18 +5,18 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-class RoleSeeder extends Seeder
+
+class FacultiesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        DB::table('roles')->insert([
-            ['name' => 'admin'],
-            ['name' => 'student'],
-            ['name'=>'manager'],
-            ['name'=>'condinatoor'],
+        DB::table('faculties')->insert([
+            ['name' => 'Marketing'],
+            ['name' => 'Computing'],
+            ['name' => 'Event'],
         ]);
     }
 }

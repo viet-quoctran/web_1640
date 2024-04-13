@@ -22,6 +22,7 @@ class User extends Authenticatable
         'email',
         'password',
         'role_id',
+        'faculties_id',
     ];
 
     /**
@@ -54,5 +55,9 @@ class User extends Authenticatable
     public function words()
     {
         return $this->hasMany(Word::class);
+    }
+    public function faculties()
+    {
+        return $this->belongsTo(Faculties::class, 'faculties_id');
     }
 }

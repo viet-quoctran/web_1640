@@ -17,10 +17,9 @@ class CheckAdmin
     public function handle(Request $request, Closure $next): Response
     {
        // Kiểm tra nếu người dùng đã đăng nhập và có vai trò là admin
-        if (Auth::check() && Auth::user()->role_id == 1) {
+        if (Auth::check() && in_array(Auth::user()->role_id, [1, 3])) {
             return $next($request);
         }
-
         // Nếu không phải admin, có thể chuyển hướng họ về một trang khác
         return redirect('/')->with('error', 'Bạn không có quyền truy cập trang này!');
 
