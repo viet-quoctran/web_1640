@@ -10,12 +10,24 @@
                 @csrf
                 <input class="form-control" name="email" type="text" value="{{ Auth::check() ? Auth::user()->email : '' }}" disabled>
                 <div class="form-group">
+                  <label for="word_files">Title</label>
+                  <input class="form-control" type="text" name="title">
+                </div>
+                <div class="form-group">
                   <label for="word_files">Upload Word Files</label>
                   <input class="form-control" id="word_files" type="file" name="word_files[]" multiple required>
                 </div>
                 <div class="form-group">
                   <label for="image_files">Upload Image Files</label>
                   <input class="form-control" id="image_files" type="file" name="image_files[]" accept="image/*" multiple required>
+                </div>
+                <div class="form-group">
+                  <label for="magazines">Magazines</label>
+                  <select class="form-control" id="magazines" name="magazines_id" required>
+                    @foreach($magazines as $magazine)
+                      <option value="{{ $magazine->id }}">{{ $magazine->name }}</option>
+                    @endforeach
+                  </select>
                 </div>
                 <div class="form-group">
                   <input type="checkbox" id="commitment" name="commitment" required>

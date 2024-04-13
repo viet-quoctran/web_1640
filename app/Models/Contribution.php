@@ -10,9 +10,15 @@ class Contribution extends Model
     use HasFactory;
 
     protected $fillable = [
+        'title',
         'student_id',
+        'magazines_id',
     ];
 
+    public function magazines()
+    {
+        return $this->belongsTo(Magazines::class, 'magazines_id');
+    }
     public function user()
     {
         // Giả định rằng bạn có mối quan hệ 'student' trong model User

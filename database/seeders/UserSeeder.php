@@ -15,17 +15,35 @@ class UserSeeder extends Seeder
     {
         DB::table('users')->insert([
             'name' => 'admin',
-            'email' => 'vietquoctran2502@gmail.com',
+            'email' => 'quocviet@gmail.com',
             'password' => Hash::make('quocviet'), // Sử dụng Hash::make để mã hóa password
             'role_id' => 1, // Giả sử ID role của Admin là 1
+            'faculties_id'=> NULL,
             // Thêm các trường khác theo cấu trúc bảng của bạn
         ]);
-        DB::table('users')->insert([
-            'name' => 'usera',
-            'email' => 'vietshopify2502@gmail.com',
-            'password' => Hash::make('quocviet'), // Sử dụng Hash::make để mã hóa password
-            'role_id' => 2, // Giả sử ID role của Admin là 1
-            // Thêm các trường khác theo cấu trúc bảng của bạn
-        ]);
+        // DB::table('users')->insert([
+        //     'name' => 'usera',
+        //     'email' => 'vietshopify2502@gmail.com',
+        //     'password' => Hash::make('quocviet'), // Sử dụng Hash::make để mã hóa password
+        //     'role_id' => 2, // Giả sử ID role của Admin là 1
+        //     'faculties_id'=> 1,
+        //     // Thêm các trường khác theo cấu trúc bảng của bạn
+        // ]);
+        // DB::table('users')->insert([
+        //     'name' => 'manager',
+        //     'email' => 'quocviet@gmail.com',
+        //     'password' => Hash::make('quocviet'), // Sử dụng Hash::make để mã hóa password
+        //     'role_id' => 3, // Giả sử ID role của Admin là 1
+        //     'faculties_id'=> 2,
+        //     // Thêm các trường khác theo cấu trúc bảng của bạn
+        // ]);
+        // DB::table('users')->insert([
+        //     'name' => 'manager',
+        //     'email' => 'viettqgcd18575@fpt.edu.vn',
+        //     'password' => Hash::make('quocviet'), // Sử dụng Hash::make để mã hóa password
+        //     'role_id' => 4, // Giả sử ID role của Admin là 1
+        //     'faculties_id'=> 1,
+        //     // Thêm các trường khác theo cấu trúc bảng của bạn
+        // ]);
     }
 }

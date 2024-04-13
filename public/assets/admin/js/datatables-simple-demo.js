@@ -1,9 +1,9 @@
 window.addEventListener('DOMContentLoaded', event => {
-    // Simple-DataTables
-    // https://github.com/fiduswriter/Simple-DataTables/wiki
+    // Sử dụng querySelectorAll để lấy tất cả các bảng mà bạn muốn áp dụng DataTables
+    const datatablesSimpleAll = document.querySelectorAll('table[id^="datatablesSimple"]');
 
-    const datatablesSimple = document.getElementById('datatablesSimple');
-    if (datatablesSimple) {
-        new simpleDatatables.DataTable(datatablesSimple);
-    }
+    // Áp dụng DataTables cho mỗi bảng tìm được
+    datatablesSimpleAll.forEach(datatable => {
+        new simpleDatatables.DataTable(datatable);
+    });
 });

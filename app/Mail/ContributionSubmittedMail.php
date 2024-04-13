@@ -14,7 +14,7 @@ class ContributionSubmittedMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    protected $contribution;
+    public  $contribution;
 
     /**
      * Create a new message instance.
@@ -41,7 +41,20 @@ class ContributionSubmittedMail extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.contributionSubmitted')->with(['contribution' => $this->contribution]);
+        $wordFiles = $this->contribution->words->map(function ($word) {
+            return $word->path;
+        });
+        
+        $imageFiles = $this->contribution->images->map(function ($image) {
+            return $image->path;
+        });
+        
+        return $this->view('emails.contributionSubmitted')
+                    ->with([
+                        'wordFiles' => $wordFiles,
+                        'imageFiles' => $imageFiles,
+                    ]);
+        
     }
 
     /**
