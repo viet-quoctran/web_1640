@@ -39,6 +39,7 @@ class ContributeController extends Controller
             'title' => $request->title,
             'student_id' => $userId,
             'magazines_id' => $request->magazines_id,
+            'faculties_id'=>Auth::user()->faculties_id
         ]);
         // Xử lý upload và lưu file Word
         if ($request->hasfile('word_files')) {

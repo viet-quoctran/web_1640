@@ -17,18 +17,31 @@ use Illuminate\Support\Str;
 use App\Models\Role;
 use App\Models\Faculties;
 use App\Models\Magazines;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class AdminController extends Controller
 {
     public function dashboard(){
+        $monthlyContributions = DB::table('contributions')
+        ->selectRaw('MONTH(created_at) as month, COUNT(*) as count')
+        ->where('faculties_id', Auth::user()->faculties_id)
+        ->whereYear('created_at', date('Y'))
+        ->groupBy('month')
+        ->orderBy('month')
+        ->get();
+        $data = [123,43,23,53,12,65,23,65,77,22,15];
+        // $data = array_fill(0, 12, 0);
+        foreach ($monthlyContributions as $monthly) {
+            $data[$monthly->month - 1] = $monthly->count; // Đặt số lượng vào tháng tương ứng
+        }
         $faculties = Faculties::all();
         $users = User::all();
         $roles = Role::all();
         $magazines = Magazines::where('faculties_id', Auth::user()->faculties_id)->get();
         $contributions = Contribution::with(['words', 'images', 'user'])->get();
 
-        return view('admin.dashboard.index', compact('contributions','users','roles','faculties','magazines'));
+        return view('admin.dashboard.index', compact('contributions','users','roles','faculties','magazines','data'));
     }
     public function storeUser(Request $request)
     {

@@ -13,6 +13,7 @@ class Contribution extends Model
         'title',
         'student_id',
         'magazines_id',
+        'faculties_id',
     ];
 
     public function magazines()
