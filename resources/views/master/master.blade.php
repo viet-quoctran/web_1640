@@ -29,7 +29,6 @@
   @include('master.header')
   @include('master.newsection')
   @yield('content')
-  @include('master.footer')
 </div>
 <script src="{{ asset('../assets/js/jquery.min.js') }}"></script> 
 <script src="{{ asset('../assets/js/wow.min.js') }}"></script> 
